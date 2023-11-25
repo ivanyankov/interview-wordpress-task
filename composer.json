@@ -1,0 +1,13 @@
+{
+    "name": "ivanyankov/wordpress-form",
+    "description": "WordPress plugin which provides a form that will generate a certificate and emailed once it is filled and submitted.",
+    "type": "wordpress-plugin",
+    "require": {
+        "setasign/fpdf": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wpform\\": "src/"
+        }
+    }
+}
