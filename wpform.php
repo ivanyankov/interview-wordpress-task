@@ -4,6 +4,7 @@
  * Description: WordPress plugin which provides a form that will generate a certificate and emailed once it is filled and submitted.
  * Version: 1.0
  * Author: Ivan Yankov
+ * Text Domain: wpform-textdomain
  */
 
 define('FORM_SUBMISSIONS_TABLE_NAME', 'form_submissions');

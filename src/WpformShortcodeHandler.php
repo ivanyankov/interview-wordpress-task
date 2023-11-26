@@ -23,15 +23,15 @@ final class WpformShortcodeHandler {
         ?>
         <div class="wpform--holder">
             <form action="<?php echo esc_url(admin_url('admin-ajax.php')); ?>" data-action="wpform_submission_action" method="post">
-                <input placeholder="<?php echo __('First Name', 'wpform'); ?>" type="text" name="wpform_first_name">
-                <input placeholder="<?php echo __('Last Name', 'wpform'); ?>" type="text" name="wpform_last_name">
-                <input placeholder="<?php echo __('Email', 'wpform'); ?>" type="email" name="wpform_email">
+                <input placeholder="<?php echo __('First Name', 'wpform-textdomain'); ?>" type="text" name="wpform_first_name">
+                <input placeholder="<?php echo __('Last Name', 'wpform-textdomain'); ?>" type="text" name="wpform_last_name">
+                <input placeholder="<?php echo __('Email', 'wpform-textdomain'); ?>" type="email" name="wpform_email">
                 <input type="date" name="wpform_dob" />
-                <input placeholder="<?php echo __('Phone', 'wpform'); ?>" type="tel" name="wpform_phone">
+                <input placeholder="<?php echo __('Phone', 'wpform-textdomain'); ?>" type="tel" name="wpform_phone">
 
                 <?php wp_nonce_field('wpform_submission_nonce', 'wpform_submission_nonce'); ?>
                 
-                <button type="button"><?php echo __('Submit', 'wpform'); ?></button>
+                <button type="button"><?php echo __('Submit', 'wpform-textdomain'); ?></button>
             </form>
             <span id="form-messages--holder"></span>
         </div>

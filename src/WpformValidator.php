@@ -68,7 +68,7 @@ class WpformValidator {
                         $isValid = self::required($value);
                         
                         if (!$isValid) {
-                            $errors[$field][] = sprintf(__("The %s field is mandatory."), $fieldsNameMapping[$field], 'wpform');
+                            $errors[$field][] = sprintf(__("The %s field is mandatory."), $fieldsNameMapping[$field], 'wpform-textdomain');
                         }
 
                         break;
@@ -76,7 +76,7 @@ class WpformValidator {
                         $isValid = self::email($value);
 
                         if (!$isValid) {
-                            $errors[$field][] = sprintf(__("The %s field must be valid email."), $fieldsNameMapping[$field], 'wpform');
+                            $errors[$field][] = sprintf(__("The %s field must be valid email."), $fieldsNameMapping[$field], 'wpform-textdomain');
                         }
 
                         break;
@@ -84,7 +84,7 @@ class WpformValidator {
                         $isValid = self::phone($value);
 
                         if (!$isValid) {
-                            $errors[$field][] = sprintf(__("The %s field must be valid phone."), $fieldsNameMapping[$field], 'wpform');
+                            $errors[$field][] = sprintf(__("The %s field must be valid phone."), $fieldsNameMapping[$field], 'wpform-textdomain');
                         }
 
                         break;
@@ -92,7 +92,7 @@ class WpformValidator {
                         $isValid = self::date($value);
 
                         if (!$isValid) {
-                            $errors[$field][] = sprintf(__("The %s field must be valid date."), $fieldsNameMapping[$field], 'wpform');
+                            $errors[$field][] = sprintf(__("The %s field must be valid date."), $fieldsNameMapping[$field], 'wpform-textdomain');
                         }
 
                         break;

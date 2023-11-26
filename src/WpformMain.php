@@ -11,7 +11,10 @@ class WpformMain {
     private $shortcodeHandler;
 
     private function __construct() {
+        // Dependencies
         $this->shortcodeHandler = new WpformShortcodeHandler();
+        // Actions
+        add_action('init', [$this, 'wpform_load_textdomain']);
     }
 
     public static function getInstance() {
@@ -34,15 +37,15 @@ class WpformMain {
         $nonce = isset($_POST['wpform_submission_nonce']) ? $_POST['wpform_submission_nonce'] : '';
 
         if (!wp_verify_nonce($nonce, 'wpform_submission_nonce')) {
-            wp_send_json_error(['errors' => __('Nonce verification failed', "wpform")], 200);
+            wp_send_json_error(['errors' => __('Nonce verification failed', 'wpform-textdomain')], 200);
         }
         
         $fieldsNameMapping = [
-            'wpform_first_name' => __('First Name', 'wpform'),
-            'wpform_last_name' => __('Last Name', 'wpform'),
-            'wpform_email' => __('Email', 'wpform'),
-            'wpform_phone' => __('Phone', 'wpform'),
-            'wpform_dob' => __('Date of Birth', 'wpform'),
+            'wpform_first_name' => __('First Name', 'wpform-textdomain'),
+            'wpform_last_name' => __('Last Name', 'wpform-textdomain'),
+            'wpform_email' => __('Email', 'wpform-textdomain'),
+            'wpform_phone' => __('Phone', 'wpform-textdomain'),
+            'wpform_dob' => __('Date of Birth', 'wpform-textdomain'),
         ];
     
         $fieldsRules = [
@@ -102,15 +105,15 @@ class WpformMain {
         // send email with a link to download the certificate to the user
         if (!mail(
             $email, 
-            __("Congratulations on your certificate!", "wpform"), 
+            __("Congratulations on your certificate!", 'wpform-textdomain'), 
             sprintf(
                 __("Congratulations for filling up our form! Please find below a link where you can download your certificate: <a href=\"%s\">%s</a>"),
                 admin_url("admin-post.php?action=download_certificate&token=$user_token"),
-                __("Download certificate!", "wpform")
+                __("Download certificate!", 'wpform-textdomain')
             ),
             "Content-type: text/html; charset=iso-8859-1 \r\n"
         )) {
-            wp_send_json_error(['errors' => __("The email with a link to download your certificate was not sent. Please contact the website administrators.", "wpform")], 200);
+            wp_send_json_error(['errors' => __("The email with a link to download your certificate was not sent. Please contact the website administrators.", 'wpform-textdomain')], 200);
         }
         
         wp_send_json_success(__("You have successfully submitted the form! You will receive a link to download your certificate by an email."), 200);
@@ -139,13 +142,13 @@ class WpformMain {
         $pdf->AddPage();
         $pdf->SetFont('Arial', '', 22);
         $pdf->Cell(0, 40, "", 0, 1, 'C');
-        $pdf->Cell(0, 20, __("This is to certify that", "wpform"), 0, 1, 'C');
+        $pdf->Cell(0, 20, __("This is to certify that", 'wpform-textdomain'), 0, 1, 'C');
         $pdf->Cell(0, 20, sprintf("%s %s", $userData->first_name, $userData->last_name), 0, 1, 'C');
-        $pdf->Cell(0, 20, __("filled the", "wpform"), 0, 1, 'C');
-        $pdf->Cell(0, 20, __("2023 BeeCoded Form", "wpform"), 0, 1, 'C');
+        $pdf->Cell(0, 20, __("filled the", 'wpform-textdomain'), 0, 1, 'C');
+        $pdf->Cell(0, 20, __("2023 BeeCoded Form", 'wpform-textdomain'), 0, 1, 'C');
         $pdf->Cell(0, 30, \DateTime::createFromFormat('Y-m-d', $userData->created_at)->format('l j F'), 0, 1, 'C');
         $pdf->Image(PLUGIN_ROOT_PATH .'images/signature.png', 70, 160, 70);
-        $pdf->Cell(0, 60, __("BeeCoded SRL Bucuresti", "wpform"), 0, 1, 'C');
+        $pdf->Cell(0, 60, __("BeeCoded SRL Bucuresti", 'wpform-textdomain'), 0, 1, 'C');
         $pdf->Cell(0, 40, "", 0, 1, 'C');
         $pdf->Output('D', 'certificate.pdf');
 
@@ -158,5 +161,9 @@ class WpformMain {
         );
 
         exit;
+    }
+
+    public function wpform_load_textdomain() {
+        load_plugin_textdomain('wpform-textdomain', false, PLUGIN_ROOT_PATH . '/languages/');
     }
 }
