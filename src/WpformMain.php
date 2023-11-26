@@ -33,6 +33,10 @@ class WpformMain {
         add_action('admin_post_nopriv_download_certificate', [$this, 'wpform_handle_download_certificate']);
     }
 
+    /**
+     * Submit the user form and sends email
+     * with a link to download their certificate
+     */
     public function wpform_submission_ajax_handler() {        
         $nonce = isset($_POST['wpform_submission_nonce']) ? $_POST['wpform_submission_nonce'] : '';
 
@@ -163,6 +167,9 @@ class WpformMain {
         exit;
     }
 
+    /**
+     * Load the plugin textdomain
+     */
     public function wpform_load_textdomain() {
         load_plugin_textdomain('wpform-textdomain', false, PLUGIN_ROOT_PATH . '/languages/');
     }

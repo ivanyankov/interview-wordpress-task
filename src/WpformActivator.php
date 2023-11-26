@@ -2,7 +2,11 @@
 namespace Wpform;
 
 class WpformActivator 
-{
+{   
+    /**
+     * Executes upon plugin activation and
+     * creates a custom database table
+     */
     public static function activate() 
     {
         global $wpdb;

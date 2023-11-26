@@ -8,6 +8,9 @@ final class WpformShortcodeHandler {
         add_action('wp_enqueue_scripts', [$this, 'wpform_enqueue_scripts']);
     }
 
+    /**
+     * Enqueue the scripts for the shortcode
+     */
     public function wpform_enqueue_scripts() {
         global $post;
 
@@ -18,6 +21,9 @@ final class WpformShortcodeHandler {
         }
     }
 
+    /**
+     * Displays the shortcode HTML
+     */
     public function get_user_form_html() {
         ob_start();
         ?>
