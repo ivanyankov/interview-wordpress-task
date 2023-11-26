@@ -17,3 +17,4 @@ $plugin = Wpform\WpformMain::getInstance();
 $plugin->init();
 
 register_activation_hook(__FILE__, ['Wpform\WpformActivator', 'activate']);
+register_uninstall_hook(__FILE__, ['Wpform\WpformUninstaller', 'uninstall']);
