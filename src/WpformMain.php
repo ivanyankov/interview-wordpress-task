@@ -128,7 +128,7 @@ class WpformMain {
 
         $userData = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table_name WHERE user_token = %s", $token));
 
-        if(!$userData) {
+        if(!$userData || $userData->downloaded_certificate) {
             wp_die('Unauthorized access!', 'Error', array('response' => 403));
         }
 
@@ -145,6 +145,14 @@ class WpformMain {
         $pdf->Cell(0, 60, __("BeeCoded SRL Bucuresti", "wpform"), 0, 1, 'C');
         $pdf->Cell(0, 40, "", 0, 1, 'C');
         $pdf->Output('D', 'certificate.pdf');
+
+        $wpdb->update(
+            $table_name,
+            array('downloaded_certificate' => 1),
+            array('user_token' => $token),
+            array('%d'),
+            array('%s')
+        );
 
         exit;
     }
