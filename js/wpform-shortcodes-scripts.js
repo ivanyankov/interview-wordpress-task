@@ -15,6 +15,8 @@ class MainController {
         submitButton.addEventListener('click', (event) => {
             event.preventDefault();
 
+            submitButton.disabled = true;
+
             let formData = new FormData(form);
 
             formData.append('action', form.getAttribute('data-action'));
@@ -40,9 +42,11 @@ class MainController {
                         this.displayFormMessage(data.data.errors, false);
                     }
                 }
+                submitButton.disabled = false;
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
+                submitButton.disabled = false;
             });
         });
     }
@@ -72,8 +76,12 @@ class MainController {
         const messagsHolder = document.querySelector("#form-messages--holder");
 
         if(messagsHolder && errorMessage) {
-            messagsHolder.className = (success === true) ? "success-message" : "error-message";
+            messagsHolder.className = (success === true) ? "wpform-success-message" : "wpform-error-message";
             messagsHolder.innerText = errorMessage;
+            
+            setTimeout(() => {
+                messagsHolder.innerText = "";
+            }, 3000);
         }
     }
 

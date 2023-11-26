@@ -53,12 +53,12 @@ input:-webkit-autofill:hover {
     margin-top: 20px;
 }
 
-.error-message {
+.wpform-error-message, .error-message {
     color: #cf2e2e;
     font-size: 14px;
 }
 
-.success-message {
+.wpform-success-message {
     color: #345C00;
     font-size: 14px;
 }

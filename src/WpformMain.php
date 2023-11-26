@@ -4,6 +4,7 @@ namespace Wpform;
 
 use Wpform\WpformShortcodeHandler;
 use Wpform\WpformValidator;
+use Wpform\WpformHelper;
 use FPDF;
 
 class WpformMain {
@@ -38,6 +39,8 @@ class WpformMain {
      * with a link to download their certificate
      */
     public function wpform_submission_ajax_handler() {        
+        WpformHelper::check_rate_limit(10);
+
         $nonce = isset($_POST['wpform_submission_nonce']) ? $_POST['wpform_submission_nonce'] : '';
 
         if (!wp_verify_nonce($nonce, 'wpform_submission_nonce')) {
