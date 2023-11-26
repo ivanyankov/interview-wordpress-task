@@ -34,7 +34,7 @@ class WpformMain {
         $nonce = isset($_POST['wpform_submission_nonce']) ? $_POST['wpform_submission_nonce'] : '';
 
         if (!wp_verify_nonce($nonce, 'wpform_submission_nonce')) {
-            wp_send_json_error('Nonce verification failed', 403);
+            wp_send_json_error(['errors' => __('Nonce verification failed', "wpform")], 200);
         }
         
         $fieldsNameMapping = [
@@ -57,7 +57,10 @@ class WpformMain {
         $validationErrors = WpformValidator::validate_fields($fieldsRules, $_POST, $fieldsNameMapping);
 
         if (!empty($validationErrors)) {
-            wp_send_json_error(['errors' => $validationErrors], 200);
+            wp_send_json_error([
+                'validationErrors' => true,
+                'errors' => $validationErrors
+            ], 200);
         }
 
         global $wpdb;
@@ -107,7 +110,7 @@ class WpformMain {
             ),
             "Content-type: text/html; charset=iso-8859-1 \r\n"
         )) {
-            wp_send_json_error(['errors' => __("The email with a link to download your certificate was not sent. Please contact the website administrators.", "wpform")]);
+            wp_send_json_error(['errors' => __("The email with a link to download your certificate was not sent. Please contact the website administrators.", "wpform")], 200);
         }
         
         wp_send_json_success(__("You have successfully submitted the form! You will receive a link to download your certificate by an email."), 200);

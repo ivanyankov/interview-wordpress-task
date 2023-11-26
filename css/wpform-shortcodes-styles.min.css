@@ -1,1 +1,64 @@
-button,input{display:block;line-height:28pt;outline:0}.wpform--holder{background:#f8f4e5;padding:50px 100px;border:2px solid #000;box-shadow:15px 15px 1px #000,15px 15px 1px 2px #000}input{width:100%;font-size:14pt;margin-bottom:28pt;border:none;border-bottom:5px solid #000;background:#f8f4e5;min-width:250px;padding-left:5px;color:#000}input:focus{border-bottom:5px solid #000}button{margin:0 auto;padding:0 20px;background:#fff;letter-spacing:2px;transition:.2s ease-in-out;border:1px solid #000;box-shadow:3px 3px 1px 1px #000,3px 3px 1px 2px #000}button:hover{cursor:pointer}::selection{background:#ffc8ff}input:-webkit-autofill,input:-webkit-autofill:focus,input:-webkit-autofill:hover{border-bottom:5px solid #95a4ff;-webkit-text-fill-color:#2A293E;-webkit-box-shadow:0 0 0 1000px #f8f4e5 inset;transition:background-color 5000s ease-in-out}
+button,
+input {
+    display: block;
+    line-height: 28pt;
+    outline: 0;
+}
+.wpform--holder {
+    background: #f8f4e5;
+    padding: 50px 100px;
+    border: 2px solid #000;
+    box-shadow: 15px 15px 1px #000, 15px 15px 1px 2px #000;
+}
+input {
+    width: 100%;
+    font-size: 14pt;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 5px solid #161212;
+    background: #f8f4e5;
+    min-width: 250px;
+    padding-left: 5px;
+    color: #000;
+}
+input:focus {
+    border-bottom: 5px solid #000;
+}
+button {
+    margin: 0 auto;
+    padding: 0 20px;
+    background: #fff;
+    letter-spacing: 2px;
+    transition: 0.2s ease-in-out;
+    border: 1px solid #000;
+    box-shadow: 3px 3px 1px 1px #000, 3px 3px 1px 2px #000;
+}
+button:hover {
+    cursor: pointer;
+}
+::selection {
+    background: #ffc8ff;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover {
+    border-bottom: 5px solid #95a4ff;
+    -webkit-text-fill-color: #2a293e;
+    -webkit-box-shadow: 0 0 0 1000px #f8f4e5 inset;
+    transition: background-color 5000s ease-in-out;
+}
+
+#form-messages--holder {
+    display: block;
+    margin-top: 20px;
+}
+
+.error-message {
+    color: #cf2e2e;
+    font-size: 14px;
+}
+
+.success-message {
+    color: #345C00;
+    font-size: 14px;
+}

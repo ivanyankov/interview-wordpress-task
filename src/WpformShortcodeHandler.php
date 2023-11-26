@@ -33,6 +33,7 @@ final class WpformShortcodeHandler {
                 
                 <button type="button"><?php echo __('Submit', 'wpform'); ?></button>
             </form>
+            <span id="form-messages--holder"></span>
         </div>
         <?php
         return ob_get_clean();
