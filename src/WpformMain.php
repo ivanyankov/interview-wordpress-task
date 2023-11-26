@@ -154,7 +154,7 @@ class WpformMain {
         $pdf->Cell(0, 20, __("filled the", 'wpform-textdomain'), 0, 1, 'C');
         $pdf->Cell(0, 20, __("2023 BeeCoded Form", 'wpform-textdomain'), 0, 1, 'C');
         $pdf->Cell(0, 30, \DateTime::createFromFormat('Y-m-d', $userData->created_at)->format('l j F'), 0, 1, 'C');
-        $pdf->Image(PLUGIN_ROOT_PATH .'images/signature.png', 70, 160, 70);
+        $pdf->Image(PLUGIN_ROOT_PATH .'public/images/signature.png', 70, 160, 70);
         $pdf->Cell(0, 60, __("BeeCoded SRL Bucuresti", 'wpform-textdomain'), 0, 1, 'C');
         $pdf->Cell(0, 40, "", 0, 1, 'C');
         $pdf->Output('D', 'certificate.pdf');

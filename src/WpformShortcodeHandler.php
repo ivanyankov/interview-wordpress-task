@@ -16,8 +16,8 @@ final class WpformShortcodeHandler {
 
         // Check if the current post contains the 'get_user_form' shortcode
         if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'get_user_form')) {
-            wp_enqueue_script('wpform-shortcodes-scripts', PLUGIN_ROOT_URL . 'js/wpform-shortcodes-scripts.js', array('jquery'), null, true);
-            wp_enqueue_style('wpform-shortcodes-styles', PLUGIN_ROOT_URL . 'css/wpform-shortcodes-styles.css');
+            wp_enqueue_script('wpform-shortcodes-scripts', PLUGIN_ROOT_URL . 'public/js/wpform-shortcodes-scripts.js', array('jquery'), null, true);
+            wp_enqueue_style('wpform-shortcodes-styles', PLUGIN_ROOT_URL . 'public/css/wpform-shortcodes-styles.css');
         }
     }
 
