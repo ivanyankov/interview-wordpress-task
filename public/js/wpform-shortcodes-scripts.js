@@ -33,7 +33,7 @@ class MainController {
             })
             .then(data => {
                 if (data.success) {
-                    this.displayFormMessage(data.data, false);
+                    this.displayFormMessage(data.data, true);
                 } else {
                     this.clearErrors();
                     if (data.data.validationErrors) {
