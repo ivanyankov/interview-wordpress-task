@@ -1,7 +1,7 @@
 <?php
 namespace Wpform;
 
-class WpformValidator {
+final class WpformValidator {
 
     /**
      * Validates if the field is not empty.

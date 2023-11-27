@@ -3,7 +3,7 @@
 namespace Wpform;
 
 
-class WpformHelper {
+final class WpformHelper {
     /**
      * This ensures that the rate limit check is 
      * performed before any other processing takes place.

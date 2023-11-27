@@ -1,7 +1,7 @@
 <?php
 namespace Wpform;
 
-class WpformUninstaller
+final class WpformUninstaller
 {   
     /**
      * Executes upon plugin deletion and

@@ -7,7 +7,7 @@ use Wpform\WpformValidator;
 use Wpform\WpformHelper;
 use FPDF;
 
-class WpformMain {
+final class WpformMain {
     private static $instance = null;
     private $shortcodeHandler;
 

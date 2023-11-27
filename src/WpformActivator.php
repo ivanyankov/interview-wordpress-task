@@ -1,7 +1,7 @@
 <?php
 namespace Wpform;
 
-class WpformActivator 
+final class WpformActivator 
 {   
     /**
      * Executes upon plugin activation and
